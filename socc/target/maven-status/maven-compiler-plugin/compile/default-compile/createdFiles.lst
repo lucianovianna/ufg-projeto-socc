@@ -1,0 +1,7 @@
+com/fullstack/socc/model/Area.class
+com/fullstack/socc/model/Docente.class
+com/fullstack/socc/model/Disciplina.class
+com/fullstack/socc/model/NucleoConhecimento.class
+com/fullstack/socc/enums/StatusManifestacao.class
+com/fullstack/socc/model/ManifestacaoIntencao.class
+com/fullstack/socc/SoccApplication.class
