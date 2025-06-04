@@ -1,13 +1,23 @@
 package com.fullstack.socc.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.fullstack.socc.model.NucleoConhecimento;
+import com.fullstack.socc.service.NucleoConhecimentoService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/nucleo-conhecimento")
 public class NucleoConhecimentoController {
 
+    private final NucleoConhecimentoService service;
+
+    public NucleoConhecimentoController(NucleoConhecimentoService service) {
+        this.service = service;
+    }
+
     @GetMapping("/get-all")
-    public String getAll() {}
+    public List<NucleoConhecimento> getAll() {
+        return service.getAll();
+    }
 }
