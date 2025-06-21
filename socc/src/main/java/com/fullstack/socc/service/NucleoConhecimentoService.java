@@ -18,4 +18,8 @@ public class NucleoConhecimentoService {
     public List<NucleoConhecimento> getAll() {
         return repository.findAll();
     }
+
+    public NucleoConhecimento getById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
 }

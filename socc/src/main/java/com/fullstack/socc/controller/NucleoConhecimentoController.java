@@ -20,4 +20,9 @@ public class NucleoConhecimentoController {
     public List<NucleoConhecimento> getAll() {
         return service.getAll();
     }
+
+    @GetMapping("/get-by-id/{id}")
+    public NucleoConhecimento getById(@PathVariable Long id) {
+        return service.getById(id);
+    }
 }
