@@ -36,8 +36,8 @@ projeto/
 
 ### 1. Pré-requisitos
 
-- Docker instalado: https://www.docker.com/products/docker-desktop
-- Docker Compose instalado (opcional, pois já vem junto com o Docker Desktop)
+- Docker instalado
+- Docker Compose instalado
 
 ---
 
@@ -64,39 +64,10 @@ Isso irá:
 
 ---
 
-## 🛠️ Configurações importantes
-
-### Banco de dados PostgreSQL
-
-- **Host (dentro do Docker)**: `db`
-- **Porta (local)**: `5432`
-- **Usuário**: `soccuser`
-- **Senha**: `soccpwd`
-- **Banco**: `socc`
-
-Essas configurações já estão no `docker-compose.yml` e no `application.properties`.
-
----
-
-### Seeds de exemplo
-
-Na inicialização, a aplicação popula automaticamente as tabelas com dados de exemplo como:
-
-- Área: Ciência da Computação
-- Núcleo: Núcleo de Lógica
-- Facilitador: Maria Facilitadora
-- Docente: João Docente
-- Disciplina: Algoritmos
-- Manifestação: Status `PENDENTE`
-
-O código disso está em `DatabaseSeeder.java`.
-
----
-
 ## 🧹 Encerrar e limpar tudo
 
-Para parar e remover os containers:
+Parar e remover os containers e volumes:
 
 ```bash
-docker-compose down
+docker-compose down -v
 ```
