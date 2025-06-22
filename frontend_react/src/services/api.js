@@ -5,5 +5,7 @@ const API = axios.create({
 });
 
 export const getAllNucleos = () => API.get("/nucleo-conhecimento/get-all");
-export const getNucleoById = (id) => API.get(`/nucleo-conhecimento/get-by-id/${id}`);
-export const responderManifestacao = (id) => API.post(`/manifestacao-intencao/responder/${id}`);
+export const getNucleoById = (id) =>
+  API.get(`/nucleo-conhecimento/get-by-id/${id}`);
+export const responderManifestacao = (id, status) =>
+  API.put(`/manifestacao-intencao/responder/${id}`, { status });

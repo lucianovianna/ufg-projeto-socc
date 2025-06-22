@@ -8,7 +8,9 @@ export default function NucleosList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getAllNucleos().then((res) => setNucleos(res.data)).catch(console.error);
+    getAllNucleos()
+      .then((res) => setNucleos(res.data))
+      .catch(console.error);
   }, []);
 
   return (
@@ -28,8 +30,8 @@ export default function NucleosList() {
           {nucleos.map((nucleo) => (
             <tr key={nucleo.id} className="border-t">
               <td className="p-2 border">{nucleo.nome}</td>
-              <td className="p-2 border">{nucleo.area}</td>
-              <td className="p-2 border">{nucleo.facilitador}</td>
+              <td className="p-2 border">{nucleo.area?.nome}</td>
+              <td className="p-2 border">{nucleo.facilitador?.nome}</td>
               <td className="p-2 border">
                 <button
                   className="bg-blue-500 text-white px-2 py-1 rounded"
