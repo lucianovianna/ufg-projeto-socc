@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import com.fullstack.socc.enums.StatusManifestacao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "manifestacoes_intencoes")
 public class ManifestacaoIntencao {
@@ -14,6 +16,7 @@ public class ManifestacaoIntencao {
 
     @ManyToOne
     @JoinColumn(name = "nc_id", nullable = false)
+    @JsonBackReference
     private NucleoConhecimento nucleoConhecimento;
 
     @ManyToOne

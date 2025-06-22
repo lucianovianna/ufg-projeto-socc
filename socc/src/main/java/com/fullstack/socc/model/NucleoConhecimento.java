@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "nucleos_conhecimentos")
 public class NucleoConhecimento {
@@ -38,6 +40,10 @@ public class NucleoConhecimento {
         inverseJoinColumns = @JoinColumn(name = "disciplina_id")
     )
     private Set<Disciplina> disciplinas = new HashSet<>();
+
+    @OneToMany(mappedBy = "nucleoConhecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Set<ManifestacaoIntencao> manifestacoes = new HashSet<>();
 
 
     public Long getId() {
@@ -86,5 +92,13 @@ public class NucleoConhecimento {
 
     public void setDisciplinas(Set<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
+    }
+
+    public Set<ManifestacaoIntencao> getManifestacoes() {
+        return manifestacoes;
+    }
+
+    public void setManifestacoes(Set<ManifestacaoIntencao> manifestacoes) {
+        this.manifestacoes = manifestacoes;
     }
 }
