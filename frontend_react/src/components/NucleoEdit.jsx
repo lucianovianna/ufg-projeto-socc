@@ -97,27 +97,46 @@ export default function NucleoEdit() {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-lg font-medium text-gray-700">Manifestações</h2>
-        <ul>
-          {nucleo.manifestacoes && nucleo.manifestacoes.length > 0 ? (
-            nucleo.manifestacoes.map((m) => (
-              <li key={m.id} className="mb-2">
-                <span className="font-semibold">{m.docente.nome}</span> -{" "}
-                {m.status}
-                {m.status === "SOLICITADO" && (
-                  <button
-                    className="ml-4 px-2 py-1 bg-blue-600 text-white rounded"
-                    onClick={() => abrirDialog(m)}
-                  >
-                    Responder
-                  </button>
-                )}
-              </li>
-            ))
-          ) : (
-            <li className="text-gray-500">Nenhuma manifestação cadastrada.</li>
-          )}
-        </ul>
+        <h2 className="text-lg font-medium text-gray-700 mb-2">
+          Manifestações
+        </h2>
+        {nucleo.manifestacoes && nucleo.manifestacoes.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="min-w-full border text-sm">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="p-2 border">Docente</th>
+                  <th className="p-2 border">Data da Solicitação</th>
+                  <th className="p-2 border">Justificativa</th>
+                  <th className="p-2 border">Status</th>
+                  <th className="p-2 border">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {nucleo.manifestacoes.map((m) => (
+                  <tr key={m.id} className="border-t">
+                    <td className="p-2 border">{m.docente?.nome}</td>
+                    <td className="p-2 border">{m.dataSolicitacao}</td>
+                    <td className="p-2 border">{m.justificativa}</td>
+                    <td className="p-2 border">{m.status}</td>
+                    <td className="p-2 border">
+                      {m.status === "SOLICITADO" && (
+                        <button
+                          className="px-2 py-1 bg-blue-600 text-white rounded"
+                          onClick={() => abrirDialog(m)}
+                        >
+                          Responder
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="text-gray-500">Nenhuma manifestação cadastrada.</div>
+        )}
       </div>
 
       {dialogOpen && manifestacaoSelecionada && (

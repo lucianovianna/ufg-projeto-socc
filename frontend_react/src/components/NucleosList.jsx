@@ -7,6 +7,16 @@ export default function NucleosList() {
   const [nucleos, setNucleos] = useState([]);
   const navigate = useNavigate();
 
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogType, setDialogType] = useState(""); // 'docentes' ou 'disciplinas'
+  const [dialogNucleo, setDialogNucleo] = useState(null);
+
+  const abrirDialog = (type, nucleo) => {
+    setDialogType(type);
+    setDialogNucleo(nucleo);
+    setDialogOpen(true);
+  };
+
   useEffect(() => {
     getAllNucleos()
       .then((res) => setNucleos(res.data))
@@ -23,6 +33,8 @@ export default function NucleosList() {
             <th className="p-2 border">Nome</th>
             <th className="p-2 border">Área</th>
             <th className="p-2 border">Facilitador</th>
+            <th className="p-2 border">Docentes</th>
+            <th className="p-2 border">Disciplinas</th>
             <th className="p-2 border">Ações</th>
           </tr>
         </thead>
@@ -32,6 +44,22 @@ export default function NucleosList() {
               <td className="p-2 border">{nucleo.nome}</td>
               <td className="p-2 border">{nucleo.area?.nome}</td>
               <td className="p-2 border">{nucleo.facilitador?.nome}</td>
+              <td className="p-2 border">
+                <button
+                  className="underline text-blue-600"
+                  onClick={() => abrirDialog("docentes", nucleo)}
+                >
+                  {nucleo.docentes?.length || 0}
+                </button>
+              </td>
+              <td className="p-2 border">
+                <button
+                  className="underline text-blue-600"
+                  onClick={() => abrirDialog("disciplinas", nucleo)}
+                >
+                  {nucleo.disciplinas?.length || 0}
+                </button>
+              </td>
               <td className="p-2 border">
                 <button
                   className="bg-blue-500 text-white px-2 py-1 rounded"
@@ -44,6 +72,36 @@ export default function NucleosList() {
           ))}
         </tbody>
       </table>
+
+      {dialogOpen && dialogNucleo && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-30 z-50">
+          <div className="bg-white p-6 rounded shadow-md w-80">
+            <h3 className="text-lg font-semibold mb-4">
+              {dialogType === "docentes"
+                ? "Docentes do Núcleo"
+                : "Disciplinas do Núcleo"}
+            </h3>
+            <ul className="mb-4">
+              {(dialogType === "docentes"
+                ? dialogNucleo.docentes
+                : dialogNucleo.disciplinas
+              )?.map((item) => (
+                <li key={item.id} className="mb-1">
+                  {item.nome}
+                </li>
+              ))}
+            </ul>
+            <div className="flex justify-end">
+              <button
+                className="bg-gray-300 px-4 py-2 rounded"
+                onClick={() => setDialogOpen(false)}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
