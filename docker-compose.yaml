@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    container_name: socc-db
+    restart: always
+    environment:
+      POSTGRES_DB: socc
+      POSTGRES_USER: soccuser
+      POSTGRES_PASSWORD: soccpwd
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./socc
+    container_name: socc-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/socc
+      - SPRING_DATASOURCE_USERNAME=soccuser
+      - SPRING_DATASOURCE_PASSWORD=soccpwd
+
+  frontend:
+    build:
+      context: ./frontend_react
+    container_name: react-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
