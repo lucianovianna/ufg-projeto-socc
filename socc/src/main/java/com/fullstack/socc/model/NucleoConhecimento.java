@@ -38,4 +38,53 @@ public class NucleoConhecimento {
         inverseJoinColumns = @JoinColumn(name = "disciplina_id")
     )
     private Set<Disciplina> disciplinas = new HashSet<>();
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public Set<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public void setDocentes(Set<Docente> docentes) {
+        this.docentes = docentes;
+    }
+
+    public Docente getFacilitador() {
+        return facilitador;
+    }
+
+    public void setFacilitador(Docente facilitador) {
+        this.facilitador = facilitador;
+    }
+
+    public Set<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(Set<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
 }

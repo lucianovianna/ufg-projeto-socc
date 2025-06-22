@@ -29,4 +29,53 @@ public class ManifestacaoIntencao {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatusManifestacao status;
+
+   
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public NucleoConhecimento getNucleoConhecimento() {
+        return nucleoConhecimento;
+    }
+
+    public void setNucleoConhecimento(NucleoConhecimento nucleoConhecimento) {
+        this.nucleoConhecimento = nucleoConhecimento;
+    }
+
+    public Docente getDocente() {
+        return docente;
+    }
+
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
+
+    public LocalDate getDataSolicitacao() {
+        return dataSolicitacao;
+    }
+
+    public void setDataSolicitacao(LocalDate dataSolicitacao) {
+        this.dataSolicitacao = dataSolicitacao;
+    }
+
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
+    public StatusManifestacao getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusManifestacao status) {
+        this.status = status;
+    }
 }
