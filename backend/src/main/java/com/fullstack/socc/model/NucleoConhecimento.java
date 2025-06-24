@@ -45,6 +45,8 @@ public class NucleoConhecimento {
     @JsonManagedReference
     private Set<ManifestacaoIntencao> manifestacoes = new HashSet<>();
 
+    @Column(columnDefinition = "TEXT", nullable = true)
+    private String descricao;
 
     public Long getId() {
         return id;
@@ -100,5 +102,13 @@ public class NucleoConhecimento {
 
     public void setManifestacoes(Set<ManifestacaoIntencao> manifestacoes) {
         this.manifestacoes = manifestacoes;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
