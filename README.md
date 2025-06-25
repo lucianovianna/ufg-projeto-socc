@@ -4,6 +4,21 @@
 
 #### Grupo 6: Luciano Costa Vianna Neto, João Victor Ribas
 
+#### Escopo: Manter Núcleos de Conhecimento
+
+#### Casos de Uso: 
+- Listar Núcleos de Conhecimento
+- Responder manifestação de intenção aceito
+- Responder manifestação de intenção recusado
+
+#### Entidades: 
+- Área
+- Disciplina
+- Docente
+- Manifestação de Intenção
+- Núcleo de Conhecimento
+
+
 <br />
 <hr />
 <br />
@@ -11,7 +26,7 @@
 Este projeto é uma aplicação fullstack composta por:
 
 - **Backend**: Java Spring Boot
-- **Frontend**: React + Vite + Tailwind
+- **Frontend**: React + Vite + Tailwind + Axios
 - **Banco de Dados**: PostgreSQL
 - **Orquestração**: Docker Compose
 
