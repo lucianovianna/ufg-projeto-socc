@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function NucleosList() {
   const [nucleos, setNucleos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [dialogType, setDialogType] = useState(""); // 'docentes' ou 'disciplinas'
+  const [dialogType, setDialogType] = useState("");
   const [dialogNucleo, setDialogNucleo] = useState(null);
 
   const abrirDialog = (type, nucleo) => {
@@ -23,10 +24,34 @@ export default function NucleosList() {
       .catch(console.error);
   }, []);
 
+  const nucleosFiltrados = nucleos.filter((nucleo) => {
+    const termo = searchTerm.toLowerCase();
+    return (
+      nucleo.nome?.toLowerCase().includes(termo) ||
+      nucleo.area?.nome?.toLowerCase().includes(termo) ||
+      nucleo.facilitador?.nome?.toLowerCase().includes(termo)
+    );
+  });
+
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Núcleos de Conhecimento</h1>
-      <input className="border p-2 w-full mb-4" placeholder="Pesquisar..." />
+
+      <div className="flex items-center gap-4 mb-4">
+        <input
+          className="border p-2 flex-1"
+          placeholder="Pesquisar por nome, área ou facilitador..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button
+          className="bg-green-500 text-white px-4 py-2 rounded opacity-50 cursor-not-allowed"
+          disabled
+        >
+          Adicionar
+        </button>
+      </div>
+
       <table className="w-full border">
         <thead>
           <tr className="bg-gray-200">
@@ -39,7 +64,7 @@ export default function NucleosList() {
           </tr>
         </thead>
         <tbody>
-          {nucleos.map((nucleo) => (
+          {nucleosFiltrados.map((nucleo) => (
             <tr key={nucleo.id} className="border-t">
               <td className="p-2 border">{nucleo.nome}</td>
               <td className="p-2 border">{nucleo.area?.nome}</td>
@@ -65,11 +90,18 @@ export default function NucleosList() {
                   className="bg-blue-500 text-white px-2 py-1 rounded"
                   onClick={() => navigate(`/nucleo/${nucleo.id}`)}
                 >
-                  Ver detalhes
+                  Editar
                 </button>
               </td>
             </tr>
           ))}
+          {nucleosFiltrados.length === 0 && (
+            <tr>
+              <td colSpan="6" className="text-center p-4">
+                Nenhum núcleo encontrado.
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 
