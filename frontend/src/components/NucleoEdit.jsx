@@ -345,10 +345,6 @@ export default function NucleoEdit() {
             <tbody>
               {docentesNucleo.map((docente) => {
                 const infoDemo = DOCENTES_DEMO.find((d) => d.id === docente.id);
-                const manifestacaoSolicitada = nucleo.manifestacoes?.find(
-                  (m) =>
-                    m.docente?.id === docente.id && m.status === "SOLICITADO"
-                );
                 return (
                   <tr key={docente.id} className="border-t">
                     <td className="p-2 border flex items-center gap-2">
@@ -363,9 +359,7 @@ export default function NucleoEdit() {
                     <td className="p-2 border">
                       {infoDemo?.ingresso || "--/--/----"}
                     </td>
-                    <td className="p-2 border">
-                      {infoDemo?.status || "ACEITO"}
-                    </td>
+                    <td className="p-2 border">ACEITO</td>
                     <td className="p-2 border">
                       <div className="flex gap-2">
                         <button className="text-red-600 px-2" disabled>

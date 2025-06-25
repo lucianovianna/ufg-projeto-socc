@@ -28,7 +28,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend_react
+      context: ./frontend
     container_name: react-frontend
     ports:
       - "5173:5173"

@@ -22,12 +22,19 @@ Este projeto é uma aplicação fullstack composta por:
 ```
 projeto/
 ├── docker-compose.yml
-├── socc/                  # Backend Spring Boot
+├── backend/                  # Backend Spring Boot
 │   ├── Dockerfile
-│   └── ...código Java...
-├── frontend_react/        # Frontend React (Vite)
+│   └── config
+│   └── controller
+│   └── enums
+│   └── model
+│   └── repository
+│   └── service
+├── frontend/        # Frontend React (Vite)
 │   ├── Dockerfile
-│   └── ...código React...
+│   └── src
+│       └── components
+│       └── services
 ```
 
 ---
