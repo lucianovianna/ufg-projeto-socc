@@ -8,4 +8,4 @@ export const getAllNucleos = () => API.get("/nucleo-conhecimento/get-all");
 export const getNucleoById = (id) =>
   API.get(`/nucleo-conhecimento/get-by-id/${id}`);
 export const responderManifestacao = (id, status) =>
-  API.put(`/manifestacao-intencao/responder/${id}`, { status });
+  API.patch(`/manifestacao-intencao/responder/${id}`, { status });

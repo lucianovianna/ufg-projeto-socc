@@ -16,7 +16,7 @@ public class ManifestacaoIntencaoController {
         this.service = service;
     }
 
-    @PutMapping("/responder/{id}")
+    @PatchMapping("/responder/{id}")
     public String responderManifestacaoIntencao(
         @PathVariable Long id,
         @RequestBody RespostaManifestacaoForm body
