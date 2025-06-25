@@ -58,7 +58,7 @@ docker-compose up --build
 
 Isso irá:
 
-- Construir o backend Spring e rodar na porta **8080**
+- Construir o backend Spring e rodar na porta **8070**
 - Construir o frontend React e rodar na porta **5173**
 - Criar um container PostgreSQL e popular com dados iniciais (seeds)
 
@@ -67,7 +67,7 @@ Isso irá:
 ### 3. Acessar o sistema
 
 - **Frontend React**: http://localhost:5173
-- **Backend Spring**: http://localhost:8080
+- **Backend Spring**: http://localhost:8070
 
 ---
 
